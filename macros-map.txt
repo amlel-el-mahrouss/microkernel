@@ -1,0 +1,2 @@
+__SYS_WARN_BOOL_CXX - use this to prevent bool c linkage (useless header)
+__SYS_WARN_CXX - use this to prevent direct c linkage (risk+useless header).

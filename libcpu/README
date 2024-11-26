@@ -1,0 +1,5 @@
+CPU Extension Library
+=====================
+
+This library contains additional functions to take advantage of the current CPU.
+This can range to vector extensions to basic register I/O.
