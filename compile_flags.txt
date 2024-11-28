@@ -1,0 +1,10 @@
+-Ilibkern
+-Ilibcpu
+-Ilibident
+-Ilibm
+-D__KDEBUG__
+-D__KERNEL
+-D__KSIMP__
+-D__unix__
+-D__MPUX_NEED_MEASUREMENTS
+-std=c17
