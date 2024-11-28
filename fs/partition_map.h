@@ -1,8 +1,8 @@
 /*
  *	========================================================
  *
- *	MP MicroKernel
- * 	Copyright Amlal EL Mahrouss, all rights reserved.
+ *	mp-boot
+ * 	Copyright Amlal El Mahrouss, all rights reserved.
  *
  * 	========================================================
  */
@@ -10,25 +10,43 @@
 #ifndef __PARTITION_MAP_H__
 #define __PARTITION_MAP_H__
 
+#include <lib/types.h>
+
+/**
+ * 
+ * MBS, wrapper over mp's disklabels.
+ * 
+ */
+
+#define MBS_NAME_LEN 32
+#define MBS_MAG_LEN 4
+#define MBS_UUID_LEN 37
+
 /* the first 512 > x > 1024 bytes of a disk contains this headers. */
 
-#define UUID_LEN 37
-
+/**
+ * @brief The MP Boot Sector bootloader block.
+ * 
+ */
 struct boot_block
 {
-	char magic[4];
-    char name[32];
-    char uuid[UUID_LEN];
+	char magic[MBS_MAG_LEN];
+    char name[MBS_NAME_LEN];
+    char uuid[MBS_UUID_LEN];
     int version;
     long long int num_blocks;
     long long int sector_sz;
     long long int sector_start;
-
+    
 };
 
+/**
+ * @brief The MP Boot Sector partition block.
+ * 
+ */
 struct part_block
 {
-    char name[32];
+    char name[MBS_NAME_LEN];
     int magic;
     long long int sector_end;
     long long int sector_sz;
@@ -39,25 +57,26 @@ struct part_block
 
 };
 
-#define EPM_NAME_PART_SYS "kernsys"
-
 typedef struct part_block part_block_t;
 typedef struct boot_block boot_block_t;
 
-#define EPM_MAGIC_X86  "KPMAM"
-#define EPM_MAGIC_RV   "KPMRV"
+/* @brief AMD64 magic for MP Boot Sector */
+#define MBS_MAG   "  MBS"
 
-#define EPM_MAX_BLKS   128
+#define MBS_MAX_BLK   (128U)
 
-#define EPM_BOOT_BLK_SZ sizeof(struct boot_block)
-#define EPM_PART_BLK_SZ sizeof(struct part_block)
+#define MBS_BOOT_BLK_SZ sizeof(struct boot_block)
+#define MBS_PART_BLK_SZ sizeof(struct part_block)
+
+//! version types.
+//! use in boot block version field.
 
 enum
 {
-    EPM_AKERNEL = 0xcf,
-    EPM_SOLARIS = 0x8f,
-    EPM_BSD = 0x9f,
-    EPM_LINUX = 0xaf,
+    MBS_MP                = 0xcf,
+    MBS_LINUX             = 0x8f,
+    MBS_BERKELEY_SOFTWARE = 0x9f,
+    MBS_HCORE             = 0x1f,
 };
 
 #endif // ifndef __PARTITION_MAP_H__
