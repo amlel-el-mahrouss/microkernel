@@ -76,7 +76,7 @@ enum
     MBS_MP                = 0xcf,
     MBS_LINUX             = 0x8f,
     MBS_BERKELEY_SOFTWARE = 0x9f,
-    MBS_HCORE             = 0x1f,
+    MBS_CUSTOM             = 0x1f,
 };
 
 #endif // ifndef __PARTITION_MAP_H__
