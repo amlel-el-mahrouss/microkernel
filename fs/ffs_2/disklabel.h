@@ -15,14 +15,14 @@
 #include <fs/types.h>
 #include <stdbool.h>
 
-#define _PATH_DISKTAB "/etc/disktab"
+#define _PATH_DISKTAB "/dsk/labels"
 #define DISKTAB       _PATH_DISKTAB
 
 #define MAX_MAX_PARTS   22
 
 #define DLABEL_MAG      0xfaceface
 
-#define FFS_2_NAME_LEN 16
+#define FFS_2_NAME_LEN 37
 
 typedef struct ffs_2_disklabel
 {
