@@ -7,10 +7,10 @@
  * 	========================================================
  */
 
-#ifndef _MPUX_RISCV_H
-#define _MPUX_RISCV_H
+#ifndef _MP_RISCV_H
+#define _MP_RISCV_H
 
 #include <sys/sys.h>
 #include <hw/cpu.h>
 
-#endif // !_MPUX_RISCV_H
+#endif // !_MP_RISCV_H

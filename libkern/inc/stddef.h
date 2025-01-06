@@ -7,8 +7,8 @@
  * 	========================================================
  */
 
-#ifndef _MPUX_STDDEF_H
-#define _MPUX_STDDEF_H
+#ifndef _MP_STDDEF_H
+#define _MP_STDDEF_H
 
 typedef __SIZE_TYPE__ size_t;
 
@@ -36,7 +36,7 @@ typedef char *caddr_t;
 #define __UNIX__   (__unix__)
 #define __mpunix__ (__unix__)
 
-#ifdef __MPUX_NEED_MEASUREMENTS
+#ifdef __MP_NEED_MEASUREMENTS
 
 #define KIB (1024)
 #define MIB (1024 * KIB)
@@ -115,4 +115,4 @@ typedef union
 #define __COPYRIGHT(s) __IDSTRING(copyright, s)
 #endif // ifndef __COPYRIGHT
 
-#endif /* _MPUX_STDDEF_H */
+#endif /* _MP_STDDEF_H */

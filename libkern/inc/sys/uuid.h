@@ -7,8 +7,8 @@
  * 	========================================================
  */
 
-#ifndef _MPUX_UUID_H
-#define _MPUX_UUID_H
+#ifndef _MP_UUID_H
+#define _MP_UUID_H
 
 #include <sys/sys.h>
 
@@ -30,4 +30,4 @@ typedef uint16_t uuid_t[16];
 #define UUID_TYPE_DCE_RANDOM (4)
 #define UUID_TYPE_DCE_SHA1   (5)
 
-#endif /* ifndef _MPUX_UUID_H */
+#endif /* ifndef _MP_UUID_H */

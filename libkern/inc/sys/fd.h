@@ -7,8 +7,8 @@
  * 	========================================================
  */
 
-#ifndef _MPUX_FD_H
-#define _MPUX_FD_H
+#ifndef _MP_FD_H
+#define _MP_FD_H
 
 #include <sys/stat.h>
 #include <sys/attr.h>
@@ -44,4 +44,4 @@ int32_t sys_is_eof(fd_t fd);
 size_t  sys_tell(fd_t fd);
 int sys_seek(fd_t fd, size_t offset, int whence);
 
-#endif /* ifndef _MPUX_FD_H */
+#endif /* ifndef _MP_FD_H */

@@ -7,8 +7,8 @@
  * 	========================================================
  */
 
-#ifndef _MPUX_RECOMP_H
-#define _MPUX_RECOMP_H
+#ifndef _MP_RECOMP_H
+#define _MP_RECOMP_H
 
 /* EFAT */
 #include <sys/errno.h>
@@ -36,4 +36,4 @@ enum MPUX_RECOMP_SOURCE
     MPUX_RECOMP_SOURCE_JAVA,
 };
 
-#endif /* _MPUX_RECOMP_H */
+#endif /* _MP_RECOMP_H */

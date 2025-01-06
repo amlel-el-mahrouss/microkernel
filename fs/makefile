@@ -1,5 +1,5 @@
 CC			= riscv64-unknown-elf-gcc
-FLAGS		= -mcmodel=medany -mno-relax -mno-explicit-relocs -fno-builtin -nostdlib -c -D__MPUX_NEED_MEASUREMENTS
+FLAGS		= -mcmodel=medany -mno-relax -mno-explicit-relocs -fno-builtin -nostdlib -c -D__MP_NEED_MEASUREMENTS
 INC			= -I../ -I../builtin/ -I./ -I../libkern/inc
 
 .PHONY: fs-all

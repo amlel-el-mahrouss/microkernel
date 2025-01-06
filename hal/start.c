@@ -35,13 +35,9 @@ int mach_start(void)
 {
     while (sys_read_hart_id() >= 2) {}
 
-    try_init_feature(sys_init_trap_system(), "[TRAPS] Init failure... Booting halted.\r\n");
+    try_init_feature(sys_init_trap_system(), "[trap] init failed... booting halted.\r\n");
 
-    // TODO: handle mpp correctly.
     sys_timer_init();
-
-    sys_print_format("[smp] hart %i\n", sys_read_hart_id());
-
     sys_init_kernel();
 
     return 0;

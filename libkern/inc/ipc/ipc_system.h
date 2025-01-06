@@ -7,8 +7,8 @@
  * 	========================================================
  */
 
-#ifndef _MPUX_IPC_SYS_H
-#define _MPUX_IPC_SYS_H
+#ifndef _MP_IPC_SYS_H
+#define _MP_IPC_SYS_H
 
 #include <sched/sched.h>
 #include <sys/fd.h>
@@ -49,4 +49,4 @@ ipc_id_t sys_ipc_connect(struct ipc_addr* addr);
 int32_t sys_ipc_stat(struct ipc_addr* addr);
 void sys_ipc_close(ipc_id_t ipc);
 
-#endif /* ifndef _MPUX_IPC_SYS_H */
+#endif /* ifndef _MP_IPC_SYS_H */

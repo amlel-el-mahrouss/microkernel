@@ -17,7 +17,7 @@ OBJECTS=$(wildcard *.o) $(wildcard ../libkern/src/*.o) $(wildcard ../libkern/*.o
 
 CC_INC=-Iinc -I../libkern/inc -I../ -I../builtin/ -I../fs/ -I../libhart -I../libident/inc -I../libmthread/inc
 
-CC_FLAGS=-Wall -trigraphs -Werror -c -nostdlib -ffreestanding -fno-builtin -mcmodel=medany -mno-relax -mno-explicit-relocs -D__KDEBUG__ -D__MPUX_NEED_MEASUREMENTS -D__KERNEL -D__KSTRICT__ -D__KSIMP__ -O2 -fstack-protector-all
+CC_FLAGS=-Wall -trigraphs -Werror -c -nostdlib -ffreestanding -fno-builtin -mcmodel=medany -mno-relax -mno-explicit-relocs -D__KDEBUG__ -D__MP_NEED_MEASUREMENTS -D__KERNEL -D__KSTRICT__ -D__KSIMP__ -O2 -fstack-protector-all
 
 include common.make
 

@@ -19,9 +19,7 @@ extern bool g_reboot_requested;
 bool kext_init_kernel_extensions(void)
 {
     hw_nvme_init();
-
-    if (!g_reboot_requested)
-        ffs_2_init_filesystem();
+    ffs_2_init_filesystem();
 
     return true;
 }

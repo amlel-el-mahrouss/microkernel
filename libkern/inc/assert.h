@@ -7,8 +7,8 @@
  * 	========================================================
  */
 
-#ifndef _MPUX_ASSERT_H
-#define _MPUX_ASSERT_H
+#ifndef _MP_ASSERT_H
+#define _MP_ASSERT_H
 
 #include <sys/log.h>
 
@@ -31,4 +31,4 @@
 #   define static_assert _Static_assert
 #endif /* ifndef __cplusplus */
 
-#endif // ifndef _MPUX_ASSERT_H
+#endif // ifndef _MP_ASSERT_H

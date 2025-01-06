@@ -66,8 +66,8 @@ __COPYRIGHT("$kernel$");
 
 #define NVME_MAX_DRIVES         4
 
-#define _MPUX_NVME_PROC_IO(n) int32_t __nvme_dev##n(pipe_t* pipe)
-#define _MPUX_NVME_PROC_IO_STAT(n) _MPUX_NVME_PROC_IO(n)
+#define _MP_NVME_PROC_IO(n) int32_t __nvme_dev##n(pipe_t* pipe)
+#define _MP_NVME_PROC_IO_STAT(n) _MP_NVME_PROC_IO(n)
 
 static void hw_nvme_init_internal(void);
 
@@ -124,7 +124,7 @@ static struct fs_quota __attribute__((unused))
 };
 
 /* @brief this one checks disk quota, user should abort any operations if quota is bigger or equal to 100. */
-_MPUX_NVME_PROC_IO_STAT(_disk_quota_check)
+_MP_NVME_PROC_IO_STAT(_disk_quota_check)
 {
     (void)pipe;
 

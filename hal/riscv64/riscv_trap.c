@@ -258,8 +258,6 @@ bool sys_init_trap_system(void)
     sys_write_mie(sys_read_mie() | MIE_MEIE);
     sys_write_mstatus(sys_read_mstatus() | MSTATUS_MIE);
 
-    sys_print_format("[int] thread_pointer at %x\r\n", g_thread_pointer, g_thread_pointer);
-
     g_enabled = true;
     return true;
 }

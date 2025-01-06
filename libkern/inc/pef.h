@@ -14,8 +14,8 @@
  * @brief Portable Executable Format for MP MicroKernel
  */
 
-#ifndef _MPUX_PEF_H
-#define _MPUX_PEF_H
+#ifndef _MP_PEF_H
+#define _MP_PEF_H
 
 #include <sys/sys.h>
 #include <machine/exec.h>
@@ -82,4 +82,4 @@ struct pef_command_hdr
 
 struct mpux_glob sys_load_exec_glob(const char_t* filename);
 
-#endif /* ifndef _MPUX_PEF_H */
+#endif /* ifndef _MP_PEF_H */

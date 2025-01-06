@@ -8,8 +8,8 @@
  * 	========================================================
  */
 
-#ifndef _MPUX_DIR_H
-#define _MPUX_DIR_H
+#ifndef _MP_DIR_H
+#define _MP_DIR_H
 
 #include <sys/sys.h>
 #include <sys/stat.h>
@@ -20,4 +20,4 @@ fd_t sys_open_directory(const char* path);
 int32_t sys_close_directory(fd_t dir);
 int32_t sys_remove_directory(fd_t dir);
 
-#endif /* ifndef _MPUX_DIR_H */
+#endif /* ifndef _MP_DIR_H */

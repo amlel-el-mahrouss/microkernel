@@ -7,8 +7,8 @@
  * 	========================================================
  */
 
-#ifndef _MPUX_MEM_H
-#define _MPUX_MEM_H
+#ifndef _MP_MEM_H
+#define _MP_MEM_H
 
 #include <sys/sys.h>
 #include <string.h>
@@ -22,7 +22,7 @@
 #define HEAP_STAT_DISABLE (3U)
 
 #define HEAP_IDENT       (0xDEAF)
-#define HEAP_MAX_PTR_SZ  (0x1000)
+#define HEAP_MAX_PTR_SZ  (8192 * 16)
 
 typedef voidptr_t ptr_t;
 
@@ -32,4 +32,4 @@ voidptr_t sys_alloc_ptr(size_t size, prot_t prot); /* kernel memory alloc */
 voidptr_t sys_realloc_ptr(voidptr_t ptr, size_t siz, prot_t prot_t); /* kernel realloc */
 bool sys_heap_ctl(int cmd, voidptr_t data, size_t* size); /* heap control */
 
-#endif // !_MPUX_MEM_H
+#endif // !_MP_MEM_H

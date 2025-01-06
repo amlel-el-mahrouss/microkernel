@@ -7,8 +7,8 @@
  * 	========================================================
  */
 
-#ifndef _MPUX_ENDIAN_H
-#define _MPUX_ENDIAN_H
+#ifndef _MP_ENDIAN_H
+#define _MP_ENDIAN_H
 
 #include <stdint.h>
 
@@ -28,4 +28,4 @@ static inline uint32_t sys_switch_endian32(uint32_t nb)
     return ((nb>>24) & 0xff) | ((nb<<8) & 0xff0000) | ((nb>>8) & 0xff00) | ((nb<<24) & 0xff000000);
 }
 
-#endif // ifndef _MPUX_ENDIAN_H
+#endif // ifndef _MP_ENDIAN_H

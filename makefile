@@ -13,7 +13,7 @@ export QEMU					=qemu-system-$(MACHINE)
 export GDB 					=$(MACHINE)-unknown-elf-gdb
 
 export QEMU_FLAGS_RISCV64	=-device VGA,vgamem_mb=32 -machine virt -bios none -kernel $(INIT) -m 8G -drive if=none,format=raw,file=os.dsk,id=x0 -global virtio-mmio.force-legacy=false \
-							 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0,physical_block_size=4096,logical_block_size=512 -serial stdio
+							 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0,physical_block_size=4096,logical_block_size=512
 
 .PHONY: help
 help:

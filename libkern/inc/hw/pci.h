@@ -7,8 +7,8 @@
  * 	========================================================
  */
 
-#ifndef _MPUX_PCI_H
-#define _MPUX_PCI_H
+#ifndef _MP_PCI_H
+#define _MP_PCI_H
 
 #include <hw/pci_express.h>
 
@@ -17,4 +17,4 @@
 /* last port */
 #define PCI_PORT_END 0xCFC
 
-#endif /* ifndef _MPUX_PCI_H */
+#endif /* ifndef _MP_PCI_H */

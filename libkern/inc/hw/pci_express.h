@@ -7,8 +7,8 @@
  * 	========================================================
  */
 
-#ifndef _MPUX_PCI_EXPRESS_H
-#define _MPUX_PCI_EXPRESS_H
+#ifndef _MP_PCI_EXPRESS_H
+#define _MP_PCI_EXPRESS_H
 
 ///////////////////////////////////////////////////////////////////
 
@@ -60,4 +60,4 @@ struct hw_pci_tree
     pci_char_t d_name[];
 };
 
-#endif // ifndef _MPUX_PCI_EXPRESS_H
+#endif // ifndef _MP_PCI_EXPRESS_H

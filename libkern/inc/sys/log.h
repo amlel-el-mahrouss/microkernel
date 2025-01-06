@@ -23,17 +23,17 @@ void sys_print_float(float x);
 
 void init_io(void);
 
-#define sys_print_log(FMT, ...) { sys_print_format("%s[ LOG ] %s", GRN, RESET); sys_print_format(FMT, __VA_ARGS__); }
+#define sys_print_log(FMT, ...) { sys_print_format("%s[ LOG ] %s", GRN, RESET); sys_print_format(FMT "\r\n", __VA_ARGS__); }
 
 #ifdef __KDEBUG__
 
 #define InitIO() init_io()
-#define IOLog(LABEL) sys_print_format("%s[ DEBUG ] %s%s", GRN, RESET, LABEL)
-#define IOLogFormat(FMT, ...) { sys_print_format("%s[ DEBUG ] %s", GRN, RESET); sys_print_format(FMT, __VA_ARGS__); }
+#define IOLog(LABEL) sys_print_format("%s[ DEBUG ] %s%s\r\n", GRN, RESET, LABEL)
+#define IOLogFormat(FMT, ...) { sys_print_format("%s[ DEBUG ] %s", GRN, RESET); sys_print_format(FMT "\r\n", __VA_ARGS__); }
 
-#define IOLogInfo(LABEL) sys_print_format("%s%s %s%s", YEL, "[ INFO ]", RESET, LABEL)
-#define IOLogError(LABEL) sys_print_format("%s%s %s%s", BRED, "[ ERROR ]", RESET, LABEL)
-#define IOLogCritical(LABEL) sys_print_format("%s%s %s%s", RED, "[ CRITICAL ]", RESET, LABEL)
+#define IOLogInfo(LABEL) sys_print_format("%s%s %s%s\r\n", YEL, "[ INFO ]", RESET, LABEL)
+#define IOLogError(LABEL) sys_print_format("%s%s %s%s\r\n", BRED, "[ ERROR ]", RESET, LABEL)
+#define IOLogCritical(LABEL) sys_print_format("%s%s %s%s\r\n", RED, "[ CRITICAL ]", RESET, LABEL)
 
 #else
 

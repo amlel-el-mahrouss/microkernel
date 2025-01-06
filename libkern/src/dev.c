@@ -229,8 +229,8 @@ voidptr_t sys_create_dev_tree(const char* name, size_t len)
 		return null;
 
 	struct sys_device_tree* tree = sys_alloc_ptr(sizeof(struct sys_device_tree), SYS_PROT_READ | SYS_PROT_WRITE);
-	tree->p_cnt = 0UL;
 
+	tree->p_cnt = 0UL;
 	tree->p_prev = g_device_tree_prev;
 
 	if (tree->p_prev)

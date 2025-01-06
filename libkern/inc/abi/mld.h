@@ -7,8 +7,8 @@
  * 	========================================================
  */
 
-#ifndef _MPUX_MLD_H
-#define _MPUX_MLD_H
+#ifndef _MP_MLD_H
+#define _MP_MLD_H
 
 #include <hw/cpu.h>
 #include <stdint.h>
@@ -95,4 +95,4 @@ voidptr_t sys_get_symbol_data(struct sys_runtime_symbol* rootSymbol, const char*
 
 __END_DECLS
 
-#endif // ifndef _MPUX_MLD_H
+#endif // ifndef _MP_MLD_H
