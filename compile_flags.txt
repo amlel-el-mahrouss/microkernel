@@ -1,6 +1,7 @@
 -Ilibkern/inc
 -Ilibkern/
 -Ilibcpu
+-Ilib
 -Iinit/inc
 -Ilibident
 -Ilibm
