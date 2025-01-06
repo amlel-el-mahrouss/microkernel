@@ -18,7 +18,7 @@
 
 /**
  * The ffs2 disklabels starts after the kernel partiion map block.
- * KPM is a partition scheme used by the kernel to know where to boot a system.
+ * MBS is a partition scheme used by the kernel to know where to boot a system.
  */
 
 #include <fs/partition_map.h>

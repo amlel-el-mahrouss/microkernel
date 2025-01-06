@@ -30,13 +30,15 @@ struct sys_memory_hdr
     size_t   h_size; /* header size */
     ptr_t    h_ptr; /* the header's pointer */
     bool     h_used; /* is header used? */
+    size_t   h_flags;
+    size_t   h_prot;
 
     struct sys_memory_hdr* h_prev; /* previous header */
     struct sys_memory_hdr* h_next; /* next header */
 };
 
 /* @brief base memory header */
-static struct sys_memory_hdr* g_base_ptr = null;
+static struct sys_memory_hdr* g_base_block = null;
 
 static size_t g_heap_nalloc = 0L;
 static size_t g_heap_sz = 0L;
@@ -48,8 +50,8 @@ static bool g_heap_enabled = false;
 
 // internal memory calls
 static int32_t sys_alloc_next_mem(struct sys_memory_hdr* block_ptr, struct sys_memory_hdr** ptr_block_ptr);
-static voidptr_t sys_alloc_mem_ptr(struct sys_memory_hdr* header, size_t size, prot_t prot, int32_t map);
-static voidptr_t sys_try_mem_ptr(struct sys_memory_hdr* header, size_t size, prot_t prot, int32_t map);
+static voidptr_t sys_alloc_mem_block(struct sys_memory_hdr* header, size_t size, prot_t prot, int32_t map);
+static voidptr_t sys_try_mem_block(struct sys_memory_hdr* header, size_t size, prot_t prot, int32_t map);
 
 // memory allocation routines
 static voidptr_t sys_alloc(size_t size, prot_t prot, int32_t flags);
@@ -98,9 +100,9 @@ static bool sys_mem_init(void)
     const int64_t heap_size = __sys_heap_start - __sys_memory_end;
     g_heap_sz = heap_size;
 
-    g_base_ptr = (voidptr_t)sys_heap_start();
+    g_base_block = (voidptr_t)sys_heap_start();
 
-    struct sys_memory_hdr* block_ptr = g_base_ptr;
+    struct sys_memory_hdr* block_ptr = g_base_block;
 
     int64_t index = 0UL;
 
@@ -138,7 +140,7 @@ static bool sys_mem_disable(void)
 
     g_heap_enabled = false;
 
-    struct sys_memory_hdr* block_ptr = g_base_ptr;
+    struct sys_memory_hdr* block_ptr = g_base_block;
 
     while (block_ptr != null)
     {
@@ -190,11 +192,11 @@ static bool sys_mem_enable(void)
 static bool sys_mem_enabled(void) { return g_heap_enabled; }
 
 // ----------------------------------------------------------------
-// Function: sys_alloc_mem_ptr
+// Function: sys_alloc_mem_block
 // Purpose: Allocates a new header pointer (internal call)
 // ----------------------------------------------------------------
 
-static voidptr_t sys_alloc_mem_ptr(struct sys_memory_hdr* header, size_t size, prot_t prot, int32_t map)
+static voidptr_t sys_alloc_mem_block(struct sys_memory_hdr* header, size_t size, prot_t prot, int32_t map)
 {
     if (!g_heap_enabled)
         return null;
@@ -216,16 +218,16 @@ static voidptr_t sys_alloc_mem_ptr(struct sys_memory_hdr* header, size_t size, p
 }
 
 // ----------------------------------------------------------------
-// Function: sys_try_mem_ptr
+// Function: sys_try_mem_block
 // Purpose: Tries to allocate with this header.
 // ----------------------------------------------------------------
 
-static voidptr_t sys_try_mem_ptr(struct sys_memory_hdr* header, size_t size, prot_t prot, int32_t map)
+static voidptr_t sys_try_mem_block(struct sys_memory_hdr* header, size_t size, prot_t prot, int32_t map)
 {
     if (header == null)
         return null;
 
-    return sys_alloc_mem_ptr(header, size, prot, map);
+    return sys_alloc_mem_block(header, size, prot, map);
 }
 
 /* each block must align to 4 or 16 bytes */
@@ -271,14 +273,17 @@ static voidptr_t sys_alloc(size_t size, prot_t prot, int32_t flags)
     }
 
     voidptr_t return_ptr = null;
-    struct sys_memory_hdr* block_ptr = g_base_ptr;
+    struct sys_memory_hdr* block_ptr = g_base_block;
 
     /* we gotta loop until it's non-null */
     while (return_ptr == null)
     {
-        return_ptr = sys_try_mem_ptr(block_ptr, size, prot, flags);
+        return_ptr = sys_try_mem_block(block_ptr, size, prot, flags);
     	block_ptr = block_ptr->h_next;
     }
+
+    block_ptr->h_flags = flags;
+    block_ptr->h_prot = prot;
 
     return return_ptr;
 }
@@ -318,7 +323,7 @@ voidptr_t sys_alloc_ptr_shared(size_t size, prot_t prot)
 
 static int32_t sys_free(voidptr_t ptr)
 {
-    struct sys_memory_hdr* block_ptr = g_base_ptr;
+    struct sys_memory_hdr* block_ptr = g_base_block;
 
     while (block_ptr != null)
     {
@@ -374,7 +379,7 @@ voidptr_t sys_realloc_ptr(voidptr_t ptr, size_t size, prot_t prot)
     if (ptr == null) return sys_alloc_ptr(size, prot);
     if (size < 1) return ptr;
 
-    struct sys_memory_hdr* header = g_base_ptr;
+    struct sys_memory_hdr* header = g_base_block;
 
     while (header != null)
     {

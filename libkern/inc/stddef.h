@@ -55,7 +55,7 @@ typedef char *caddr_t;
 #define __SYS_RISCV__ (1)
 #elif defined(__x86_64__)
 #define __SYS_AMD64__ (2)
-#elif defined(__NC64K__)
+#elif defined(__SYS_AARCH64__)
 #define __SYS_NC64K__ (2)
 #endif
 
@@ -63,8 +63,8 @@ typedef char *caddr_t;
 #define __SYSTEM_ALIGN (4)
 #elif defined(__SYS_AMD64__)
 #define __SYSTEM_ALIGN (16)
-#elif defined(__NC64K__)
-#define __SYSTEM_ALIGN (4)
+#elif defined(__SYS_AARCH64__)
+#define __SYSTEM_ALIGN (16)
 #else
 #error [kernel] not a valid arch
 #endif

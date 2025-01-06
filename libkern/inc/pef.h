@@ -24,7 +24,7 @@
 #define PEF_MAGIC_FAT   "FEP"
 #define PEF_MAGIC_LEN   4
 
-#define PEF_EXEC_EXT    ".pef"
+#define PEF_EXEC_EXT    ".out"
 #define PEF_DYLIB_EXT   ".lib"
 #define PEF_OBJECT_EXT  ".obj"
 #define PEF_DEBUG_EXT   ".dbg"

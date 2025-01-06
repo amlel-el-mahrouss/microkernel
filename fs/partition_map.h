@@ -10,7 +10,7 @@
 #ifndef __PARTITION_MAP_H__
 #define __PARTITION_MAP_H__
 
-#include <lib/types.h>
+#include <sys/types.h>
 
 /**
  * 
@@ -63,7 +63,7 @@ typedef struct boot_block boot_block_t;
 /* @brief AMD64 magic for MP Boot Sector */
 #define MBS_MAG   "  MBS"
 
-#define MBS_MAX_BLK   (128U)
+#define MBS_MAX_BLKS   (128U)
 
 #define MBS_BOOT_BLK_SZ sizeof(struct boot_block)
 #define MBS_PART_BLK_SZ sizeof(struct part_block)

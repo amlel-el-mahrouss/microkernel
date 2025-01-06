@@ -1,10 +1,16 @@
--Ilibkern
+-Ilibkern/inc
+-Ilibkern/
 -Ilibcpu
+-Iinit/inc
 -Ilibident
 -Ilibm
+-Ibuiltin
+-Ifs
+-I./
 -D__KDEBUG__
 -D__KERNEL
 -D__KSIMP__
 -D__unix__
 -D__MPUX_NEED_MEASUREMENTS
+-D__SYS_RISCV__
 -std=c17

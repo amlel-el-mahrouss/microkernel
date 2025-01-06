@@ -18,13 +18,13 @@
 #include <pfs.h>
 
 #include <builtin/uptime/uptime.h>
+#include <fs/partition_map.h>
 
 /**
  * The ffs2 disklabels starts after the xpm blocks.
- * KPM is a partition scheme used by the kernel to know where to boot a system.
+ * MBS is a partition scheme used by the kernel to know where to boot a system.
  */
 
-#include <fs/partition_map.h>
 
 #define FFS_2_BASE_LABEL_TABLE (sizeof(struct boot_block) * MBS_MAX_BLKS)
 #define FFS_2_END_OF_BLT       (FFS_2_BASE_LABEL_TABLE + sizeof(struct ffs_2_disklabel) * MAX_MAX_PARTS)
