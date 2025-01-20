@@ -1,3 +1,3 @@
 set disassemble-next-line on
 b __mach_start
-target remote : 7767
+target remote localhost:1234
